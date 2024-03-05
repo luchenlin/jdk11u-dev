@@ -131,12 +131,8 @@ public class TestDefaultMethods {
 
         if (args == null || args.length == 0) {
             try {
-                List<String> vmArgs = new ArrayList<String>();
-                vmArgs.add("-XX:+UsePerfData");
-                vmArgs.addAll(Utils.getVmOptions());
-
                 theApp = new LingeredAppWithDefaultMethods();
-                LingeredApp.startApp(vmArgs, theApp);
+                LingeredApp.startApp(theApp, "-XX:+UsePerfData");
                 createAnotherToAttach(instanceKlassNames,
                                       theApp.getPid());
             } finally {

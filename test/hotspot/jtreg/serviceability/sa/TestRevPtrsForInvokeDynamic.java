@@ -82,12 +82,8 @@ public class TestRevPtrsForInvokeDynamic {
         SATestUtils.skipIfCannotAttach(); // throws SkippedException if attach not expected to work.
         if (args == null || args.length == 0) {
             try {
-                List<String> vmArgs = new ArrayList<String>();
-                vmArgs.add("-XX:+UsePerfData");
-                vmArgs.addAll(Utils.getVmOptions());
-
                 theApp = new LingeredAppWithInvokeDynamic();
-                LingeredApp.startApp(vmArgs, theApp);
+                LingeredApp.startApp(theApp, "-XX:+UsePerfData");
                 createAnotherToAttach(theApp.getPid());
             } finally {
                 LingeredApp.stopApp(theApp);

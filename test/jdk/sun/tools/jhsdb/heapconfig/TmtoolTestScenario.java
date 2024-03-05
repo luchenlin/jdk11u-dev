@@ -98,7 +98,8 @@ public class TmtoolTestScenario {
                 List<String> vmArgsExtended = new ArrayList<String>();
                 vmArgsExtended.add("-XX:+UsePerfData");
                 vmArgsExtended.addAll(vmArgs);
-                theApp = LingeredApp.startApp(vmArgsExtended);
+                theApp = new LingeredApp();
+                LingeredApp.startAppExactJvmOpts(theApp, vmArgsExtended.toArray(new String[0]));
 
                 System.out.println("Starting " + toolName + " against " + theApp.getPid());
                 JDKToolLauncher launcher = JDKToolLauncher.createUsingTestJDK("jhsdb");
@@ -111,7 +112,7 @@ public class TmtoolTestScenario {
                 launcher.addToolArg(Long.toString(theApp.getPid()));
 
                 ProcessBuilder processBuilder = SATestUtils.createProcessBuilder(launcher);
-               processBuilder.redirectError(ProcessBuilder.Redirect.INHERIT);
+                processBuilder.redirectError(ProcessBuilder.Redirect.INHERIT);
                 Process toolProcess = processBuilder.start();
 
                 // By default child process output stream redirected to pipe, so we are reading it in foreground.

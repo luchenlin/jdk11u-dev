@@ -45,11 +45,7 @@ public class TestPrintMdo {
         LingeredApp app = null;
         try {
             ClhsdbLauncher test = new ClhsdbLauncher();
-            List<String> vmArgs = new ArrayList<String>();
-            vmArgs.add("-XX:+ProfileInterpreter");
-            vmArgs.addAll(Utils.getVmOptions());
-
-            app = LingeredApp.startApp(vmArgs);
+            app = LingeredApp.startApp("-XX:+ProfileInterpreter");
             System.out.println ("Started LingeredApp with pid " + app.getPid());
             List<String> cmds = List.of("printmdo -a");
 

@@ -90,13 +90,8 @@ public class TestG1HeapRegion {
         SATestUtils.skipIfCannotAttach(); // throws SkippedException if attach not expected to work.
         if (args == null || args.length == 0) {
             try {
-                List<String> vmArgs = new ArrayList<String>();
-                vmArgs.add("-XX:+UsePerfData");
-                vmArgs.add("-XX:+UseG1GC");
-                vmArgs.addAll(Utils.getVmOptions());
-
                 theApp = new LingeredApp();
-                LingeredApp.startApp(vmArgs, theApp);
+                LingeredApp.startApp(theApp, "-XX:+UsePerfData", "-XX:+UseG1GC");
                 createAnotherToAttach(theApp.getPid());
             } finally {
                 LingeredApp.stopApp(theApp);

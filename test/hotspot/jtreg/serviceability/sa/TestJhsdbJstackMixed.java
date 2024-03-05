@@ -174,7 +174,7 @@ public class TestJhsdbJstackMixed {
             }
 
             app = new LingeredAppWithNativeMethod();
-            LingeredApp.startApp(vmArgs, app);
+            LingeredApp.startAppExactJvmOpts(app, vmArgs);
             System.out.println("Started LingeredApp with pid " + app.getPid());
             runJstackMixedInLoop(app);
             System.out.println("Test Completed");

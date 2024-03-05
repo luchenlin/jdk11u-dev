@@ -60,8 +60,8 @@ public class JInfoTest {
         LingeredApp app2 = new JInfoTestLingeredApp();
         try {
             ArrayList<String> params = new ArrayList<String>();
-            LingeredApp.startApp(params, app1);
-            LingeredApp.startApp(params, app2);
+            LingeredApp.startAppExactJvmOpts(params, app1);
+            LingeredApp.startAppExactJvmOpts(params, app2);
             OutputAnalyzer output = jinfo("-flag", "MinHeapFreeRatio=1", "JInfoTestLingeredApp");
             output.shouldHaveExitValue(0);
             output = jinfo("-flag", "MinHeapFreeRatio", "JInfoTestLingeredApp");
@@ -85,8 +85,8 @@ public class JInfoTest {
         LingeredApp app2 = new JInfoTestLingeredApp();
         try {
             ArrayList<String> params = new ArrayList<String>();
-            LingeredApp.startApp(params, app1);
-            LingeredApp.startApp(params, app2);
+            LingeredApp.startAppExactJvmOpts(params, app1);
+            LingeredApp.startAppExactJvmOpts(params, app2);
             OutputAnalyzer output = jinfo("JInfoTestLingeredApp");
             output.shouldHaveExitValue(0);
             // "Runtime Environment" written once per proc

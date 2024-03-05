@@ -121,13 +121,8 @@ public class TestHeapDumpForInvokeDynamic {
         }
 
         try {
-            List<String> vmArgs = new ArrayList<String>();
-            vmArgs.add("-XX:+UsePerfData");
-            vmArgs.add("-Xmx512m");
-            vmArgs.addAll(Utils.getVmOptions());
-
             theApp = new LingeredAppWithInvokeDynamic();
-            LingeredApp.startApp(vmArgs, theApp);
+            LingeredApp.startApp(theApp, "-XX:+UsePerfData", "-Xmx512m");
             attachDumpAndVerify(heapDumpFileName, theApp.getPid());
         } finally {
             LingeredApp.stopApp(theApp);
