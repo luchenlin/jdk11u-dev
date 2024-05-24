@@ -184,8 +184,13 @@ public final class ConcurrentModification extends ThreadGroup {
     }
 
 
-    private record Scanner(JFileChooser fileChooser)
-            implements Runnable {
+    private static class Scanner implements Runnable {
+	
+	private JFileChooser fileChooser;
+
+	private Scanner(JFileChooser fileChooser) {
+	    this.fileChooser = fileChooser;
+	}
 
         @Override
         public void run() {
